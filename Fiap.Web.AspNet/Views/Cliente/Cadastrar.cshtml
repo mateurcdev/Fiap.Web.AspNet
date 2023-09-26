@@ -1,0 +1,71 @@
+﻿    @model Fiap.Web.AspNet.Models.ClienteModel
+
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Cliente - Cadastrar</title>
+    </head>
+    <body>
+    <h1>Cliente - Cadastrar</h1>
+
+        <!-- formulário HTML com Tag Helpers-->
+    <form asp-action="Cadastrar" asp-controller="Cliente" method="post">
+        <div class="form-horizontal">
+            <hr />
+            <!-- Trecho de validação para se existe mensagem a ser exibida -->
+            @if (!Html.ViewData.ModelState.IsValid)
+            {
+                <!-- Tag para exibição da lista de erros -->
+                <div asp-validation-summary="All" class="alert alert-danger"></div>
+            }
+
+            <hr />
+
+            <div class="form-group">
+                <label>Nome:</label>
+                <div class="col-md-10">
+                    <!-- Caixa de Texto -->
+                    <input asp-for="Nome" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Data Nascimento:</label>
+                <div class="col-md-10">
+                    <!-- Caixa de Texto -->
+                    <input asp-for="DataNascimento" /> (MM/DD/AAAA)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Observação:</label>
+                <div class="col-md-10">
+                    <!-- Caixa de Texto -->
+                    <input asp-for="Observacao" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Representante:</label>
+                <select asp-for="RepresentanteId" asp-items="@ViewBag.representantes" class="form-control col-2">
+                    <option value="">Selecione</option>
+                </select>
+                <span class="text-danger" asp-validation-for="RepresentanteId"></span>
+            </div>
+
+
+            <hr />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <a asp-controller="Cliente" asp-action="Index" class="btn btn-warning">Voltar</a>
+                    <input type="submit" value="Cadastrar" class="btn btn-primary" />
+                </div>
+            </div>
+            <hr />
+        </div>
+        </form>
+
+    </body>
+    </html>

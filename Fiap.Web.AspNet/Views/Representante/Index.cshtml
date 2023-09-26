@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Fiap.Web.AspNet.Models.RepresentanteModel>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Representantes</title>
+</head>
+<body>
+    <h1>Representantes</h1>
+    <p>
+        <!-- uso de TagHelpers para definir o Controller e a Action -->
+        <a asp-controller="Representante" asp-action="Cadastrar">Novo Representante</a>
+    </p>
+
+    <!-- Verifica se a chave "Mensagem" existe no TempData -->
+    @if (@TempData["Mensagem"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <!-- Imprime para o usuário a mensagem -->
+            @TempData["Mensagem"]
+        </div>
+    }
+
+
+    <table class="table" border="1">
+        <tr>
+            <th>Id</th>
+            <th>CPF</th>
+            <th>Nome</th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <label>@item.RepresentanteId</label>
+                </td>
+                <td>
+                    <label>@item.Cpf</label>
+                </td>
+                <td>
+                    <label>@item.NomeRepresentante</label>
+                </td>
+                <td>
+
+                    <!-- asp-route-id é usado para informar o Id do Item selecionado. -->
+                    <a asp-controller="Representante" 
+                        asp-action="Editar"
+                        asp-route-id="@item.RepresentanteId">Editar</a>
+
+                    <a asp-controller="Representante" 
+                        asp-action="Consultar"
+                        asp-route-id="@item.RepresentanteId">Consultar</a>
+
+                    <a asp-controller="Representante" 
+                        asp-action="Excluir"
+                        asp-route-id="@item.RepresentanteId">Excluir</a>
+                </td>
+            </tr>
+        }
+    </table>
+</body>
+</html>

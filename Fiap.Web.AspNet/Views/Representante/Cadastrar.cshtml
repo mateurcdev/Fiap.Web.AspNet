@@ -1,0 +1,56 @@
+﻿    @model Fiap.Web.AspNet.Models.RepresentanteModel
+
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Representante - Cadastrar</title>
+    </head>
+    <body>
+        <h1>Representante - Cadastrar</h1>
+
+        <!-- formulário HTML com Tag Helpers-->
+        <form asp-action="Cadastrar" asp-controller="Representante" method="post">
+            <div class="form-horizontal">
+                <hr />
+                <!-- Trecho de validação para se existe mensagem a ser exibida -->
+                @if (!Html.ViewData.ModelState.IsValid)
+                {
+                    <!-- Tag para exibição da lista de erros -->
+                    <div asp-validation-summary="All" class="alert alert-danger"></div>
+                }
+
+
+                <div class="form-group">
+                    <label asp-for="Cpf" class="control-label"></label>
+                    <div class="col-md-10">
+                        <!-- Caixa de Texto -->
+                        <input asp-for="Cpf" />
+                        <!-- Bloco para exibir mensagem de erro -->
+                        <span asp-validation-for="Cpf" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="NomeRepresentante" class="control-label"></label>
+                    <div class="col-md-10">
+                        <!-- Caixa de Texto -->
+                        <input asp-for="NomeRepresentante"  />
+                        <!-- Bloco para exibir mensagem de erro -->
+                        <span asp-validation-for="NomeRepresentante" class="text-danger"></span>
+                    </div>
+                </div>
+                <hr />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <a asp-controller="Representante" asp-action="Index" class="btn btn-warning">Voltar</a>
+                        <input type="submit" value="Cadastrar" class="btn btn-primary" />
+                    </div>
+                </div>
+                <hr />
+            </div>
+        </form>
+
+    </body>
+    </html>

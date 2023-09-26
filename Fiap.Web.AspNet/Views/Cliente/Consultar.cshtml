@@ -1,0 +1,45 @@
+﻿@model Fiap.Web.AspNet.Models.RepresentanteModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Representante - Consultar</title>
+</head>
+<body>
+    <h1>Representante - Consultar</h1>
+
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            <label><b>Id</b></label>
+            <div class="col-md-10">
+                <span>@Model.RepresentanteId</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2"><b>Cpf</b></label>
+            <div class="col-md-10">
+                <span>@Model.Cpf</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label><b>Nome</b></label>
+            <div class="col-md-10">
+                <span>@Model.NomeRepresentante</span>
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <a asp-controller="Representante" asp-action="Index" class="btn btn-warning">Voltar</a>
+            </div>
+        </div>
+        <hr />
+    </div>
+
+</body>
+</html>
